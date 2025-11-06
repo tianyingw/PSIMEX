@@ -15,10 +15,10 @@ Inv_Box <- function(y,lam){
 ## estimate misclassification matrix and p using the BoxCox method
 fn_box <- function(mean_box_x,s2_box_x,s2_u,lam,a){
   fn_x <-  function(x){
-    out = dnorm(Box(x,lam),mean=mean_box_x,sd=sqrt(s2_box_x))*x^(lam-1) 
+    out = dnorm(Box(x,lam),mean=mean_box_x,sd=sqrt(s2_box_x))*x^(lam-1) / s2_box_x 
     return(out)}  # f(x)
   fn_wx <- function(w,x){
-    out = dnorm(Box(w,lam),mean=Box(x,lam),sd=sqrt(s2_u))*w^(lam-1)
+    out = dnorm(Box(w,lam),mean=Box(x,lam),sd=sqrt(s2_u))*w^(lam-1) / s2_u
     return(out)}  # f(w|x)
   # Double integrals(w in [a1,a2], x in [b1,b2])
   myfun = function(w,x) { 
