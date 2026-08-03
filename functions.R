@@ -84,6 +84,7 @@ fn_power <- function(A,n){
 }
 ## fn_lambda is used in fn_simfex
 fn_lambda <- function(data,A,p,lambda,theta){
+  p = t(A)%*%p
   A = fn_power(A,lambda)
   A = fn_norm(A)
   theta_lam = c()
