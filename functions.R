@@ -211,7 +211,7 @@ fn_simfex <- function(w,y,B.boot){
   ## estimate, se, p.value (H_0: theta_J-theta_1 = 0)
   theta_simfex = theta_simfex[J+1] 
   se.simfex = b.se.simfex[J+1]
-  p.simfex = pnorm(theta_simfex/se.simfex, lower.tail = F)*2
+  p.simfex = pnorm(abs(theta_simfex/se.simfex), lower.tail = F)*2
   result = matrix(round(c(theta_simfex, se.simfex, p.simfex),3),1,3)
   rownames(result) = "theta_J-theta_1"
   colnames(result) = c("estimate", "se", "p.value")
